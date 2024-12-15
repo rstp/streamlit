@@ -1,2 +1,34 @@
-docker compose -f /home/APPS/streamlit/docker-compose.yml up
-# bash /home/APPS/streamlit/testpwd
+#! /bin/bash
+
+# =====================
+# Run streamlit project.
+# =====================
+
+usage() {
+    echo "
+    runStreamlit
+
+    Your project must include the following:
+    |--data/
+    |       optionnally some data files
+    |
+    |--project/
+    |       app.py 
+    "
+    exit 0
+}
+
+if [ ! -d "${PWD}/data" ] ; then
+    echo "missing ./data"
+    usage
+elif [ ! -d "${PWD}/project" ] ; then
+    echo "missing ./project"
+    usage
+elif [ ! -f "${PWD}/project/app.py" ] ; then
+    echo "missing project/app.py"
+    usage
+else
+
+    docker compose -f /home/APPS/streamlit/docker-compose.yml up
+
+fi
