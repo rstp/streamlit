@@ -6,8 +6,8 @@ services:
     ports:
       - '8501:8501'
     volumes:
-      - './data:/usr/src/app/data:delegated'
-      - './project:/usr/src/app/project:delegated'
+      - ${PWD}/data:/usr/src/app/data:delegated
+      - ${PWD}/project:/usr/src/app/project:delegated
     environment:
       - USER_ID=1000
       - GROUP_ID=1000

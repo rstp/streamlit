@@ -1,0 +1,2 @@
+docker compose -f /home/APPS/streamlit/docker-compose.yml up
+# bash /home/APPS/streamlit/testpwd
