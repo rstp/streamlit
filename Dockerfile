@@ -1,7 +1,7 @@
 ###############
 # BUILD IMAGE #
 ###############
-FROM python:3.11-slim AS build
+FROM python:3.8.2-slim-buster AS build
 
 # virtualenv
 ENV VIRTUAL_ENV=/opt/venv
@@ -15,11 +15,11 @@ RUN apt-get update && \
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-
+RUN pip install --force-reinstall --no-deps bokeh==2.4.3
 #################
 # RUNTIME IMAGE #
 #################
-FROM python:3.11-slim AS runtime
+FROM python:3.8.2-slim-buster AS runtime
 
 # setup user and group ids
 ARG USER_ID=1000
